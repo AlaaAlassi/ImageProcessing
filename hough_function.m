@@ -28,10 +28,16 @@ for xi = 1:x
                 %to the line passing through the pixel (the line we are
                 %voting for )
                 r  = xi * cos(th) + yj * sin(th);
-                %this va
-                rho_index = round(r+num_rhos/2);        %num_rhos/2              
+                %Addin bias to prevent nigative values for the ndex of rho
+                %in hough image
+                rho_index = round(r+num_rhos/2);        
+                % Accumulate a vote for every lne that passes throu htid
+                % pixel, every line hase a creadt of votes stored in the
+                % hoogh image inside a pixel with the adress of (rho_index, theta_i)
+                %if a line passes in tow pixels, then that line accimulates
+                %more votes in his own adress (rho_index, theta_i).
                 hough_space(rho_index, theta_i) = ...
-                     hough_space(rho_index, theta_i) + 1;
+                hough_space(rho_index, theta_i) + 1;
             end
         end
     end
