@@ -11,7 +11,7 @@ I_edge = edge(I2, edge_detection);
 [rho, theta, hough_matrix] = hough_function(I_edge, edge_detection);
 
 % get the pixels for the peaks
-[rows, columns] = get_hough_peaks(hough_matrix, threshold);
+[rows, columns] = get_hough_peaks(hough_matrix, threshold)
 
 % draw the lines
 draw_lines(I2, theta, rho, rows, columns, edge_detection);
