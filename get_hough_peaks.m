@@ -19,7 +19,7 @@ c = [];
 % the threshold difference is the diffrence between the highs peak in the
 % hough imae and the other peaks that are less than it by maxmum of
 % (hreshold difference)
-% the reson why are tak'ng the max of the max is that the first max will 
+% the reson why are taking the max of the max is that the first max will 
 %will return the maximum VECTOR and from that vector we take the maximum
 %element so that we get the maximum node.
 thresh = max(max(hough_space)) - thresh_diff;
