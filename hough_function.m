@@ -42,8 +42,7 @@ for xi = 1:x
         end
     end
 end
-theta
-rho
+
 % display it
 subplot(1,2,1), imshow(hough_space,[],'XData',theta,'YData',rho,...
             'InitialMagnification','fit');

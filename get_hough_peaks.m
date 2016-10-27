@@ -33,8 +33,8 @@ for i = 1:size(max_in_col, 2)
    if max_in_col(i) > thresh
        
        %append the index of the node to c vector 
-       c(end + 1) = i
+       c(end + 1) = i;
         %append the value of the node to r vector
-       r(end + 1) = row_number(i)
+       r(end + 1) = row_number(i);
    end
 end
