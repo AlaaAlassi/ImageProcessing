@@ -1,4 +1,4 @@
-function [rho, theta, hough_space] = hough_function(image, edge_detection)
+function [rho, theta, accumulator] = hough_function(image, edge_detection)
 
 theta_sample_frequency = 0.01;                                             
 [x, y] = size(image);
@@ -9,7 +9,7 @@ num_thetas = numel(theta);
 num_rhos = numel(rho);
 
 % NOTE : the rows represenrs the length and columns represents the angle  
-hough_space = zeros(num_rhos, num_thetas);
+accumulator = zeros(num_rhos, num_thetas);
 
 % perform hough transform
 for xi = 1:x
@@ -36,17 +36,18 @@ for xi = 1:x
                 % hoogh image inside a pixel with the adress of (rho_index, theta_i)
                 %if a line passes in tow pixels, then that line accimulates
                 %more votes in his own adress (rho_index, theta_i).
-                hough_space(rho_index, theta_i) = ...
-                hough_space(rho_index, theta_i) + 1;
+                accumulator(rho_index, theta_i) = ...
+                accumulator(rho_index, theta_i) + 1;
             end
         end
     end
 end
 
 % display it %(1,2,1)
-subplot(2,1,2), imshow(hough_space,[],'XData',theta,'YData',rho,...
-            'InitialMagnification','fit');
-xlabel('radian'), ylabel('\rho');
+subplot(2,1,2), imshow(accumulator,[],'XData',theta,'YData',rho); %'fit'
+xlabel('radian'), ylabel('rho');
 myString = sprintf('Hough Transform for %s', edge_detection); 
 title(myString);
-axis on, axis normal, hold on;
+axis on
+axis normal
+hold on;
