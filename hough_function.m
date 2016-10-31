@@ -44,7 +44,7 @@ for xi = 1:x
 end
 
 % display it %(1,2,1)
-subplot(2,1,2), imshow(accumulator,[],'XData',theta,'YData',rho); %'fit'
+subplot(2,1,2), imshow(accumulator,[],'XData',theta,'YData',rho);
 xlabel('radian'), ylabel('rho');
 myString = sprintf('Hough Transform for %s', edge_detection); 
 title(myString);
