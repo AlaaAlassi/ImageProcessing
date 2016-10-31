@@ -43,8 +43,8 @@ for xi = 1:x
     end
 end
 
-% display it
-subplot(1,2,1), imshow(hough_space,[],'XData',theta,'YData',rho,...
+% display it %(1,2,1)
+subplot(2,1,2), imshow(hough_space,[],'XData',theta,'YData',rho,...
             'InitialMagnification','fit');
 xlabel('radian'), ylabel('\rho');
 myString = sprintf('Hough Transform for %s', edge_detection); 
