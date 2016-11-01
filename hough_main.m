@@ -5,7 +5,8 @@ figure
 I = imread(image);
 I2 = rgb2gray(I);
 I_edge = edge(I2, edge_detection);
-
+%I_edge = canny(I2);
+%imshow(I_edge)
 % the implemented hough transform function
 % and display it
 [rho, theta, hough_matrix] = hough_function(I_edge, edge_detection);
