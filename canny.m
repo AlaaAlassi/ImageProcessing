@@ -40,35 +40,34 @@ function outimage = canny(imageIN)
     Ixx=im2double(Ixx);
     
     for v = 1 : y
-      for u = 2 : x
+      for u = 1 : x
         theta(u,v) = abs(atand(Iyy(u,v)/Ixx(u,v))); 
+        
+         if ((theta(u,v) >= 0) && (theta(u,v) <= 22.5) || (theta(u,v) >= 157.5) && (theta(u,v) <= 180))
+            ntheta(u,v) = 0;
+         end
+        
+          if ((theta(u,v) >= 22.5) && (theta(u,v) <= 67.5))
+            ntheta(u,v) = 45;
+          end
+             if ((theta(u,v) >= 67.5) && (theta(u,v) <= 112.5))
+            ntheta(u,v) = 90;
+             end
+        
+        if ((theta(u,v) >= 112.5) && (theta(u,v) <= 180))
+            ntheta(u,v) = 135;
+        end
+       
+        
       end
     end
     
-    theta
+
     
+ 
+
     
-% supimg(u,v) = 0;
-% for v = 2 : 509
-%     for u = 2 : 509
-%         theta(u,v) = abs(atand(IDyy(u,v)/IDxx(u,v))); 
-%         
-%         if ((theta(u,v) >= 0) && (theta(u,v) <= 22.5) || (theta(u,v) >= 157.5) && (theta(u,v) <= 180))
-%             ntheta(u,v) = 0;
-%         end;
-%         
-%         if ((theta(u,v) >= 22.5) && (theta(u,v) <= 67.5))
-%             ntheta(u,v) = 45;
-%         end;
-%         
-%         if ((theta(u,v) >= 67.5) && (theta(u,v) <= 112.5))
-%             ntheta(u,v) = 90;
-%         end;
-%         
-%         if ((theta(u,v) >= 112.5) && (theta(u,v) <= 180))
-%             ntheta(u,v) = 135;
-%         end;
-%                        
+
 %         %     N O N - M A X I M U M   S U P P R E S S I O N
 %         if (ntheta(u,v) == 0)
 %                 if (mod(u, v) < mod(u-1, v) || mod(u, v) < mod(u+1, v))
@@ -131,7 +130,7 @@ function outimage = canny(imageIN)
 %subplot (1, 2, 2),imshow(resimg);axis image; title('Canny Edge Image');
 
 
-outimage = GausImage ; %resimg
+outimage =  ntheta ; %resimg
 
 
 %imshow(resimg);
