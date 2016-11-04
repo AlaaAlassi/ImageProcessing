@@ -1,22 +1,22 @@
 function outimage = canny(imageIN)
-
- grayImage =rgb2gray(imageIN);
- [x,y] = size(grayImage)
+ 
+ grayImage = imageIN ;  %rgb2gray(imageIN)rgb2gray(imageIN)
+ [x,y] = size(grayImage);
  
 % smooth the image using gaussian with kernel size 6 and sigma 10 
  H = fspecial('gaussian',6,10);
  GausImage = imfilter(grayImage, H,'replicate' );
-  size( GausImage)
+  size( GausImage);
 %APPLYING SOBEL MASK ON X-DIRECTION
  H = fspecial('sobel');
  Ixx = imfilter( GausImage, H,'replicate' );
- size(Ixx)
+ size(Ixx);
  %imshow(Ixx)
 
 % %APPLYING SOBEL MASK ON Y-DIRECTION
 
  Iyy = imfilter( GausImage, H','replicate' );
-  size(Iyy)
+  size(Iyy);
  % imshow(Iyy)
 
 %  
@@ -129,9 +129,9 @@ end
 
 % E N D  OF T H R E S H O L D I N G
 resimg = gnl - gnh;   %Edge of the Image 
-   
-%subplot (1, 2, 1),imshow(ID);axis image; title('Original Image');
- subplot (1, 2, 2),imshow(resimg);axis image; title('Canny Edge Image');
+resimg = resimg > 0;
+
+subplot (1, 2, 2),imshow(resimg);axis image; title('Canny Edge Image');
 
 
 outimage = resimg; %resimg
