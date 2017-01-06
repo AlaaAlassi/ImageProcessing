@@ -131,7 +131,7 @@ end
 resimg = gnl - gnh;   %Edge of the Image 
 resimg = resimg > 0;
 
-subplot (1, 2, 2),imshow(resimg);axis image; title('Canny Edge Image');
+imshow(resimg);axis image; title('Canny Edge Image');
 
 
 outimage = resimg; %resimg
