@@ -1,8 +1,8 @@
 clear;close all;clc;
 %dont need: horproj, notevalue
 
-img = im2double(imread('aa.png'));
-
+ img = im2double(imread('aa.png'));
+ %img = im2double(imread('moonlghtSonata.jpg'));
 
 
 
@@ -28,7 +28,12 @@ plot(x,y,'s','color','white');
 lines = houghlines(edge,T,R,P,'FillGap',100,'MinLength',100);
 
 
-BW = bwmorph(imcomplement(BW),'clean',Inf);
+ BW = bwmorph(imcomplement(BW),'clean',Inf);
+ 
+% BW = bwmorph(BW,'clean'  ,Inf);
+%figure,imshow(BW);
+
+
 BW=imcomplement(BW);
 figure, imshow(Orginalgray), hold on
 LinesHeight = [];
@@ -56,15 +61,11 @@ for k = 1:length(centersSorting);
     for m = 1:length(LinesHeight);
         A(m,k) =  LinesHeight(m) - centersSorting(k,2);
     end
-    
-     if abs(A(m,k)) >= 7 && abs(A(m,k)) <= 10
-         k
+     if A(1,k) >= -60 && A(1,k)<= -55
         disp('c')  
-     elseif abs(A(m,k)) >=1  && abs(A(m,k)) <= 3.5
-         k
+     elseif A(1,k) >= -55 && A(1,k)<= -48
       disp('D') 
      end
-     k
 end
 
 
